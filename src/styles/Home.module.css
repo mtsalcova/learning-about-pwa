@@ -12,6 +12,11 @@
   align-items: center;
 }
 
+.main button {
+  cursor: pointer;
+}
+
+
 .footer {
   display: flex;
   flex: 1;
