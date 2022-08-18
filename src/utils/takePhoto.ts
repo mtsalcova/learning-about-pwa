@@ -21,7 +21,7 @@ export function getStream() {
     !navigator.mozGetUserMedia &&
     !navigator.msGetUserMedia
   ) {
-    alert("User Media API not supported.");
+    console.log("User Media API not supported.");
     return;
   }
 
@@ -45,19 +45,19 @@ export function getStream() {
       theStream = stream;
     },
     function (err: Error) {
-      alert("Error: " + err);
+      console.log("Error: " + err);
     }
   );
 }
 
 export function takePhoto() {
   if (!("ImageCapture" in window)) {
-    alert("ImageCapture is not available");
+    console.log("ImageCapture is not available");
     return;
   }
 
   if (!theStream) {
-    alert("Grab the video stream first!");
+    console.log("Grab the video stream first!");
     return;
   }
 
@@ -69,5 +69,5 @@ export function takePhoto() {
       var theImageTag = document.querySelector("#imageTag")! as any;
       theImageTag.src = URL.createObjectURL(blob);
     })
-    .catch((err) => alert("Error: " + err));
+    .catch((err) => console.log("Error: " + err));
 }

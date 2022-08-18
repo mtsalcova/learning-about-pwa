@@ -1,29 +1,51 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import { getStream, takePhoto } from "../utils/takePhoto";
 
 const Home: NextPage = () => {
+  const [buttonPressed, setButtonPressed] = useState(false);
+
   useEffect(() => {
     getStream();
   }, []);
 
+  function initTakePhoto() {
+    setButtonPressed(!buttonPressed);
+  }
+
+  useEffect(() => {
+    if (buttonPressed) {
+      takePhoto();
+    }
+  }, [buttonPressed]);
+
   return (
-    <div className={styles.container}>
+    <section>
       <Head>
-        <title>Create Next App</title>
+        <title>How you feeling today?</title>
+        <meta
+          name="viewport"
+          content="width=device-width, user-scalable=no, viewport-fit=cover"
+        />
       </Head>
 
       <main className={styles.main}>
         <h1 className={styles.title}>How you feeling today?</h1>
 
-        <img id="imageTag" />
-        <video autoPlay style={{ width: "240px", height: "180px" }}></video>
-
-        <button onClick={takePhoto}>Tirar foto</button>
+        <div className={styles["box-board"]}>
+          <div className={styles.board}>
+            <img className={!buttonPressed ? styles.hide : ""} id="imageTag" />
+            <video autoPlay className={styles.video}></video>
+          </div>
+          <button
+            className={buttonPressed ? styles.icon : ""}
+            onClick={initTakePhoto}
+          ></button>
+        </div>
       </main>
-    </div>
+    </section>
   );
 };
 
