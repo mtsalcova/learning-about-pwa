@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #a7917b;
+  background-color: #9fa8b5;
 }
 
 .main h1 {
@@ -44,6 +44,8 @@
   width: 100% !important;
   flex: 1;
   height: auto !important;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 
 .main button {
