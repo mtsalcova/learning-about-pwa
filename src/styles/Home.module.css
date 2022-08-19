@@ -34,6 +34,8 @@
   position: absolute;
   object-fit: cover;
   z-index: 2;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
   top: 0;
   left: 0;
   height: 100%;
