@@ -21,6 +21,8 @@ const Home: NextPage = () => {
     }
   }, [buttonPressed]);
 
+  const classImg = !buttonPressed ? styles.hide : "";
+
   return (
     <section>
       <Head>
@@ -36,7 +38,10 @@ const Home: NextPage = () => {
 
         <div className={styles["box-board"]}>
           <div className={styles.board}>
-            <img className={!buttonPressed ? styles.hide : ""} id="imageTag" />
+            {buttonPressed && <img className={classImg} id="imageTag" />}
+            {!buttonPressed && (
+              <img src={""} className={classImg} id="imageTag" />
+            )}
             <video autoPlay className={styles.video}></video>
           </div>
           <button
